@@ -1,7 +1,5 @@
 backend: # Set up your backend
   name: gitlab
-  repo: https://gitlab.com/qolab/blog
-  auth_type: implicit # Required for implicit grant
 
 local_backend: true # Optional if you want to use the local proxy mode
 
