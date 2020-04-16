@@ -1,8 +1,9 @@
 {
   "private": true,
-  "name": "site",
-  "version": "1.0.0",
+  "name": "@qolab/blog",
+  "version": "0.0.0",
   "license": "MIT",
+  "author": "qolab <qolab.eu@gmail.com>",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
