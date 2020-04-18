@@ -12,8 +12,8 @@ before_script:
 compile_assets:
   stage: compile_assets
   script:
-    - yarn install
-    - yarn build
+    - yarn install --silent
+    - yarn build --silent
 
 deploy:
   stage: deploy
