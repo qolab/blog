@@ -1,7 +1,7 @@
 image: ubuntu:18.04
 
-stages:
-  deploy
+# stages:
+#   deploy
 
 before_script:
   - apt-get update -qy
@@ -13,10 +13,10 @@ compile_assets:
     - yarn install --pure-lockfile --cache-folder .yarn-cache
     - yarn build
 
-# deploy:
+deploy:
 #   stage: deploy
 #     # only:
 #     #     - master
-#   script:
-#     - apt-get update -qq && apt-get install -y -qq lftp
+  script:
+    - apt-get update -qq && apt-get install -y -qq lftp
 #     # - lftp -c "set ftp:ssl-allow no; open -u $FTP_PASSWORD, $FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
