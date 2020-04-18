@@ -8,7 +8,6 @@ before_script:
 compile_assets:
   stage: build
   script:
-    - yarn install --pure-lockfile --cache-folder .yarn-cache
     - yarn build
 
 deploy:
