@@ -10,11 +10,13 @@ before_script:
   - apt-get install yarn -y
 
 compile_assets:
+  stage: compile_assets
   script:
     - yarn install
     - yarn build
 
 deploy:
+  stage: deploy
   script:
     - lftp -c "open -u $FTP_USERNAME $FTP_PASSWORD sftp://$FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
 
