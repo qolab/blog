@@ -13,8 +13,8 @@ before_script:
 #     - yarn install --pure-lockfile --cache-folder .yarn-cache
 #     - yarn build
 
-deploy:
-  script:
-    - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME, $FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
-    - yarn install --pure-lockfile --cache-folder .yarn-cache
-    - yarn build
+# deploy:
+#   script:
+#     - lftp -c "set ftp:ssl-allow no; open -u $FTP_USERNAME, $FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+#     - yarn install --pure-lockfile --cache-folder .yarn-cache
+#     - yarn build
