@@ -1,23 +1,21 @@
 image: node:11.10.1
 
 stages:
-    - compile_assets
     - deploy
 
 before_script:
-  - apt-get update -qq && apt-get install
+  - apt-get update -qq && apt-get upgrade -y
   - apt-get install -y lftp
+  - yarn install
 
-compile_assets:
-  stage: compile_assets
-  before_script:
-   - yarn install
-  script:
-    - yarn build
+cache:
+  paths:
+    - node_modules/
 
 deploy:
   stage: deploy
+  only:
+    - master
   script:
-    - lftp -c "open -u $FTP_USERNAME $FTP_PASSWORD sftp://$FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
-
-
+    - yarn build
+    - lftp -e "set ftp:ssl-allow  no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
