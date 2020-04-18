@@ -4,17 +4,14 @@ before_script:
   - apt-get update -qy
   - apt-get install -y lftp
 
-# compile_assets:
-#   stage: build
-#   script:
-#     - yarn install --pure-lockfile --cache-folder .yarn-cache
-#     - yarn build
+compile_assets:
+  stage: build
+  script:
+    - yarn install --pure-lockfile --cache-folder .yarn-cache
+    - yarn build
 
 deploy:
   script:
-    # - lftp -c "open -u $FTP_USERNAME $FTP_PASSWORD sftp://$FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
-    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete public/ ./sub/blog; bye"
-    # - yarn install --pure-lockfile --cache-folder .yarn-cache
-    # - yarn build
+    - lftp -c "open -u $FTP_USERNAME $FTP_PASSWORD sftp://$FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
 
 
