@@ -1,19 +1,19 @@
-image: ubuntu:18.04
+image: node:9.4.0
 
 stages:
     - compile_assets
     - deploy
 
 before_script:
-  - apt-get update -qy
+  - apt-get update -qq && apt-get install
   - apt-get install -y lftp
-  - apt-get install yarn -y
 
 compile_assets:
   stage: compile_assets
+  before_script:
+   - yarn install
   script:
-    - yarn install --silent
-    - yarn build --silent
+    - yarn build
 
 deploy:
   stage: deploy
