@@ -6,8 +6,8 @@ before_script:
   - apt-get install yarn -y
 
 compile_assets:
-  stage: build
   script:
+    - yarn install
     - yarn build
 
 deploy:
