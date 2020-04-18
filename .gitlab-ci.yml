@@ -1,5 +1,9 @@
 image: ubuntu:18.04
 
+stages:
+    - compile_assets
+    - deploy
+
 before_script:
   - apt-get update -qy
   - apt-get install -y lftp
