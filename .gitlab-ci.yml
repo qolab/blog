@@ -12,6 +12,4 @@ deploy:
   stage: deploy
   script:
     - yarn build
-    - lftp -c "open -u $FTP_USERNAME $FTP_PASSWORD sftp://$FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
-
-
+    - lftp -d -e "set ftp:ssl-allow  no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
