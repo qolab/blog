@@ -18,4 +18,4 @@ deploy:
     - master
   script:
     - yarn build
-    - lftp -e "set ftp:ssl-allow  no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev public ./_sub/blog  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+    - lftp -e "set ftp:ssl-allow  no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; mirror -Rev public/ ./_sub/blog/public  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
