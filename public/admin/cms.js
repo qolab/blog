@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "3e55fadfc6c62bcdc943";
+/******/ 	var hotCurrentHash = "2aa9cf6df9ffca4b8980";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -869,8 +869,8 @@ setImmediate(function () {
     return;
   }
 
-  reactHotLoader.register(_netlifyIdentityWidget, "_netlifyIdentityWidget", "/home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms-identity.js");
-  reactHotLoader.register(addLoginListener, "addLoginListener", "/home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms-identity.js");
+  reactHotLoader.register(_netlifyIdentityWidget, "_netlifyIdentityWidget", "C:\\Users\\Sebi\\Projects\\blog\\node_modules\\gatsby-plugin-netlify-cms\\cms-identity.js");
+  reactHotLoader.register(addLoginListener, "addLoginListener", "C:\\Users\\Sebi\\Projects\\blog\\node_modules\\gatsby-plugin-netlify-cms\\cms-identity.js");
 })();
 
 ;
@@ -941,8 +941,8 @@ _netlifyCmsApp.default.registerPreviewStyle("cms.css");
     return;
   }
 
-  reactHotLoader.register(_netlifyCmsApp, "_netlifyCmsApp", "/home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms.js");
-  reactHotLoader.register(_emitter, "_emitter", "/home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms.js");
+  reactHotLoader.register(_netlifyCmsApp, "_netlifyCmsApp", "C:\\Users\\Sebi\\Projects\\blog\\node_modules\\gatsby-plugin-netlify-cms\\cms.js");
+  reactHotLoader.register(_emitter, "_emitter", "C:\\Users\\Sebi\\Projects\\blog\\node_modules\\gatsby-plugin-netlify-cms\\cms.js");
 })();
 
 ;
@@ -1589,8 +1589,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms.js */"./node_modules/gatsby-plugin-netlify-cms/cms.js");
-module.exports = __webpack_require__(/*! /home/stanley/Documents/qolab/blog/node_modules/gatsby-plugin-netlify-cms/cms-identity.js */"./node_modules/gatsby-plugin-netlify-cms/cms-identity.js");
+__webpack_require__(/*! C:\Users\Sebi\Projects\blog\node_modules\gatsby-plugin-netlify-cms\cms.js */"./node_modules/gatsby-plugin-netlify-cms/cms.js");
+module.exports = __webpack_require__(/*! C:\Users\Sebi\Projects\blog\node_modules\gatsby-plugin-netlify-cms\cms-identity.js */"./node_modules/gatsby-plugin-netlify-cms/cms-identity.js");
 
 
 /***/ }),

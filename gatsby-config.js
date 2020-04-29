@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Blog`,
-    name: `qolab`,
+    name: `Blog qolab`,
     siteUrl: `https://blog.qolab.eu`,
-    description: `Prečítajte si články od našich najlepších ľudí.`,
+    description: `Prečítajte si články od našich najlepších ľudí. Venujeme sa prevažne témam v oblasti vývoja webových aplikácii, ale nájdete u nás aj iné zaujímavé odvetvia.`,
     hero: {
       heading: `Vitajte, prečítajte si články od našich najlepších ľudí.`,
       maxWidth: 652,
@@ -24,7 +24,8 @@ module.exports = {
       {
         name: `facebook`,
         url: `https://facebook.com/qolab.sro/`,
-      },
+      }
+      
     ],
   },
   plugins: [
@@ -58,5 +59,8 @@ module.exports = {
       options: {
       },
     },
+    {
+      resolve: 'gatsby-plugin-root-import'
+    }
   ],
 };
