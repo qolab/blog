@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Blog - qolab`,
-    name: `Blog qolab`,
+    name: `qolab`,
     siteUrl: `https://blog.qolab.eu`,
     description: `Prečítajte si články od našich najlepších ľudí. Venujeme sa prevažne témam v oblasti vývoja webových aplikácii, ale nájdete u nás aj iné zaujímavé odvetvia.`,
     hero: {
