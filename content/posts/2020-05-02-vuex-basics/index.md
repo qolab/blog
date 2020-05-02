@@ -182,7 +182,7 @@ Existujú tri rozdiely medzi akciou a mutáciou:
 
 1. Actions môžu obsahovať asynchrónne operácie, mutations nie
 2. Actions miesto mutovania state-u commitujú mutácie
-3. Action sa dispatchujú, mutations commitujú
+3. Actions sa dispatchujú, mutations commitujú
 
 Vysvetlíme si to na našom príklade. Vytvoríme si jednoduchú akciu login, ktorá nám commitne mutáciu login.
 
