@@ -1,5 +1,5 @@
 import React from 'react';
-import 'src/css/typography.css'
+import 'src/assets/css/typography.css'
 
 /**
  * Paste in your SVG logo and return it from this component.
@@ -10,7 +10,7 @@ import 'src/css/typography.css'
  */
 export default function Logo({ fill }) {
   return (
- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="150px" height="34px" viewBox="0 0 150 34" >  
+ <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="150px" height="34px" viewBox="0 0 150 34" >
     <text x="0" y="25" fill={fill} style={{fontSize: "25px", fontFamily: "Qolab Font"}}>qolab</text>
 </svg>
   );

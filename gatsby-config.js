@@ -13,10 +13,6 @@ module.exports = {
         name: `github`,
         url: `https://github.com/qolab`,
       },
-      // {
-      //   name: `instagram`,
-      //   url: `https://instagram.com`,
-      // },
       {
         name: `linkedin`,
         url: `https://www.linkedin.com/company/qolab-europe`,
@@ -37,7 +33,6 @@ module.exports = {
         authorsPage: true,
         sources: {
           local: true,
-          // contentful: true,
         },
       },
     },

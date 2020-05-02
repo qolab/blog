@@ -3,6 +3,8 @@ FallbackResource /index.html
 RewriteEngine On
 RewriteBase /
 
+ErrorDocument 404 https://%{HTTP_HOST}/404
+
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
