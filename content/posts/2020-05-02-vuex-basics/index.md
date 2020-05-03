@@ -6,7 +6,7 @@ hero: media/header.png
 ---
 # Prečo sa vôbec zaujímať o Vuex
 
-Aby sme si vedeli odpovedať na túto otázku musíme najprv vedieť čo Vuex vôbec je. Vuex je knižnica pre Vue.js aplikácie, ktorá sa zaoberá tzv. "state" manažmentom aplikácie. Zmysel má hlavne v stredných a väčších webových aplikáciach, ktoré sa skladajú z väčšieho počtu komponentov. Tieto komponenty potrebujú vo väčšine prípadov medzi sebou komunikovať. V čistom Vue.js je táto komunikácia vyriešená pomocou tzv. "props", "emitov" a "listenerov". No ak máme veľa komponentov, tak môže vzniknúť veľa komunikácie. Toto môže spôsobiť veľa vo svojej podstate opakujúceho sa kódu, ktorý sa stará iba o túto komunikáciu. Takže presne to čo programátor nechce. Vuex ponúka riešenie tohoto problému.
+Aby sme si vedeli odpovedať na túto otázku musíme najprv vedieť čo Vuex vôbec je. Vuex je knižnica pre Vue.js aplikácie, ktorá sa zaoberá tzv. "state" manažmentom aplikácie. Zmysel má hlavne v stredných a väčších webových aplikáciach, ktoré sa skladajú z väčšieho počtu komponentov. Tieto komponenty potrebujú vo väčšine prípadov medzi sebou komunikovať. V čistom Vue.js je táto komunikácia vyriešená pomocou tzv. "props" (parent to child) a "events" (child to parent). No, ak máme veľa komponentov, tak nám metóda events a props nepomôže, stáva sa neudržateľňou. To môže spôsobiť veľa opakujúceho sa kódu. Takže presne to čo nechceme. Vuex ponúka riešenie tohoto problému.
 
 # Ako to funguje?
 
@@ -14,7 +14,7 @@ Vuex predstavuje niečo ako centrálne úložisko pre premenné, tzv "store". Pr
 
 ## State
 
-Vysvetlíme si ako so store pracovať na jednoduchom príklade. Predstavme si, že máme skupinu užívateľov, ktorý sa chcú prihlásiť do našej aplikácie. O našom užívateľovi vieme základné informácie ako id, email a stav, či je prihlásený alebo nie. Tento príklad postavíme na jednoduchej Vue.js aplikácii. Najprv si musíme v `src/store/` vytvoriť súbor `index.js`, v ktorom si nastavíme náš základný state, z ktorého budeme vychádzať. Predstavme si, že máme 3 užívateľov. Užívateľov sa oplatí mať v store, pretože k nim budeme chcieť pravdepodobne pristupovať vo viacerých častiach aplikácie.
+Vysvetlíme si, ako so store pracovať na jednoduchom príklade. Predstavme si, že máme skupinu užívateľov, ktorý sa chcú prihlásiť do našej aplikácie. O našom užívateľovi vieme základné informácie ako id, email a stav, či je prihlásený alebo nie. Tento príklad postavíme na jednoduchej Vue.js aplikácii. Najprv si musíme v `src/store/` vytvoriť súbor `index.js`, v ktorom si nastavíme náš základný state, z ktorého budeme vychádzať. Predstavme si, že máme 3 užívateľov. Užívateľov sa oplatí mať v store, pretože k nim budeme chcieť pravdepodobne pristupovať vo viacerých častiach aplikácie.
 
 ```jsx
 // index.js
@@ -34,7 +34,7 @@ export default new Vuex.Store({
 });
 ```
 
-Super, to by sme mali. Poďme sa pozrieť ako vyzerá naš komponent.
+Super, to by sme mali. Poďme sa pozrieť ako vyzerá naš komponent. Pre jednoduchosť použijeme na jeho vyskladanie bootstrap-vue.
 
 ```jsx
 // Login.vue
@@ -50,11 +50,11 @@ Super, to by sme mali. Poďme sa pozrieť ako vyzerá naš komponent.
         required
       />
       <b-button
-				type="submit"
-				variant="outline-primary mx-3"
-			>
-				Login
-			</b-button>
+        type="submit"
+        variant="outline-primary mx-3"
+       >
+        Login
+      </b-button>
     </b-form>
   </div>
 </template>
@@ -95,26 +95,26 @@ export default new Vuex.Store({
 });
 ```
 
-Ako môžeme vidieť takýto jednoduchý getter sa dá zapísať pomocou arrow function a vráti nám čo sme potrebovali. Keby však potrebujete robiť viacero operácii, tak si treba pamätať dve veci. Getter vždy príjíme ako argument state a vždy musí niečo returnovať. Predstavte si to ako určitú alternatívu ku computed properties vo Vue.js avšak, k tejto premennej viete pristupovať z celej aplikácie. Stačí ak v komponente do časti script pridáme dve nasledovne veci
+Ako môžeme vidieť takýto jednoduchý getter sa dá zapísať pomocou `arrow function` a vráti nám čo sme potrebovali. Keby však potrebujete robiť viacero operácii, tak si treba pamätať dve veci. Getter vždy príjíme ako argument state a vždy musí niečo returnovať. Predstavte si to ako určitú alternatívu ku computed properties vo Vue.js avšak, k tejto premennej viete pristupovať z celej aplikácie. Stačí, ak v komponente do časti script pridáme dve nasledovne veci
 
 ```jsx
 // import helperu z vuex-u
 import { mapGetters } from 'vuex';
 
 export default {
-	// ...
-
-	// v computed premenných využijeme helper,
-	// ktorý nám zavolá getter v store
-	computed: {computed: {
+  // ...
+    
+  // v computed premenných využijeme helper,
+  // ktorý nám zavolá getter v store
+  computed: {
     ...mapGetters({
       users: 'notLoggedUsers',
     }),
-  },
+  }
 };
 ```
 
-Pokial chceme premennej nastaviť iný názov v komponente, tak je to možné tak ako v príklade. Pokal chceme aby sa jednoducho volala ako getter, existuje nednoduchšia varianta a to:
+Pokiaľ chceme premennej nastaviť iný názov v komponente, tak je to možné tak ako v príklade. Pokaľ chceme, aby sa jednoducho volala ako getter, existuje nednoduchšia varianta a to:
 
 ```jsx
 ...mapGetters([
@@ -126,7 +126,7 @@ Presne tak, to je všetko. Teraz už máme načítaných našich používateľov
 
 ![media/app.png](media/app.png)
 
-Terez ich potrebujeme prihlasovať, čiže meniť state usera. Keby sme nepoužívali vuex, tak by sme niečo takéto robili pravdepodobne pomocou metód. Alternatíva metód v store sú takzvané mutácie alebo mutations. Tie dovoľujú meniť (mutovať) stav premenných. 
+Teraz ich potrebujeme prihlasovať, čiže meniť state usera. Keby sme nepoužívali vuex, tak by sme niečo takéto robili pravdepodobne pomocou metód. Alternatíva metód v store sú takzvané mutácie alebo mutations. Tie dovoľujú meniť (mutovať) stav. 
 
 ## Mutations
 
@@ -138,9 +138,9 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-	// ...
+  // ...
 
-	mutations: {
+  mutations: {
     login(state, payload) {
       const userToLogIn = state.users.find((user) => user.email === payload.email);
       userToLogIn.logged = true;
@@ -193,9 +193,9 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-	// ...
+  // ...
 
-	actions: {
+  actions: {
     login(context, payload) {
       context.commit('login', payload);
     },
@@ -248,13 +248,13 @@ export default {
 
 ## Vue DevTools
 
-Výhoda Vuex-u je jeho integrácia s oficiálnym Vue devtools rozšírením, kde si okrem počiatočného a aktuálneho stavu viete pri debuggovaní doslova cestovať v čase a zvoliť si hociktorý zo stavov, ktoré apllikácia mala. Ukážeme si to na našom logine. Prihlásili sme si nášho užívateľa rob@qolab.eu, čo dispatchne akciu pre prihlásenie, ktorá následne commitne mutáciu. Ako možeme vidieť na videu nižšie, vo Vue devtools možeme vidieť všetky mutácie, ktoré boli uskutočnené a k nim state store v ako sa nachádzal po danej mutácii. Ako som spomínal vyššie dá sa cestovať v čase a opätovne commitovať mutácie, čo ponúka nenahraditeľný nástroj pri debugovaní problémov. Veľmi odporúčam sa s ním zoznámiť.
+Výhoda Vuex-u je jeho integrácia s oficiálnym Vue devtools rozšírením, kde si okrem počiatočného a aktuálneho stavu vieme pri debuggovaní doslova cestovať v čase a zvoliť si hociktorý zo stavov, ktoré aplikácia mala. Ukážeme si to na našom logine. Prihlásili sme si nášho užívateľa rob@qolab.eu, čo dispatchne akciu pre prihlásenie, ktorá následne commitne mutáciu. Ako možeme vidieť na videu nižšie, vo Vue devtools možeme vidieť všetky mutácie, ktoré boli uskutočnené a k nim state store v ako sa nachádzal po danej mutácii. Ako som spomínal vyššie dá sa cestovať v čase a opätovne commitovať mutácie, čo ponúka nenahraditeľný nástroj pri debugovaní problémov. Veľmi odporúčam sa s ním zoznámiť.
 
 ![media/time-travel.gif](media/time-travel.gif)
 
 ## Modules
 
-Pri zložitejších aplikáciach ako je náš login sa môže stať, že potrebujete uložiť do state a mutovať veľké množstvo dát. Aby v tom nevznikol neporiadok, dajú sa jednoduché časti rozdeliť do takzvaných modulov. Každý modul môže obsahovať svoj vlastný state, gettery, mutácie a akcie. Avšak vždy budeme potrebovať aj takzvaný rootModule, v ktorom sme pracovali doteraz. Predstavte si to, že by sme do našej aplikácie chceli pridať nejaký typ kategorizácie napríklad podľa spoločnosti, kde sú zamestnaní. Táto spoločnosť by mala opäť svoje údaje a nie je dobre aby boli pomiešané s údajmi o užívateľoch v jednom store. Takže v tomto prípade dáva zmysel si vytvoriť modul pre užívateľa, druhý pre spoločnosť a držať ich stavy, gettery, mutácie a akcie oddelene. Potom tieto moduly zjednotíme v našom rootModule.
+Pri zložitejších aplikáciach ako je náš login sa môže stať, že potrebujete uložiť do state a mutovať veľké množstvo dát. Aby v tom nevznikol neporiadok, dajú sa jednoduché časti rozdeliť do takzvaných modulov. Každý modul môže obsahovať svoj vlastný state, gettery, mutácie a akcie. Avšak vždy budeme potrebovať aj takzvaný rootModule, v ktorom sme pracovali doteraz. Predstavte si to, že by sme do našej aplikácie chceli pridať nejaký typ kategorizácie napríklad podľa spoločnosti, kde sú zamestnaní. Táto spoločnosť by mala opäť svoje údaje a nie je dobré, aby boli pomiešané s údajmi o užívateľoch v jednom store. Takže v tomto prípade dáva zmysel si vytvoriť modul pre užívateľa, druhý pre spoločnosť a držať ich stavy, gettery, mutácie a akcie oddelene. Potom tieto moduly zjednotíme v našom rootModule.
 
 ```jsx
 const store = new Vuex.Store({
