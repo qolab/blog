@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Blog - qolab`,
+    title: `qolab | Blog`,
     name: `qolab`,
-    siteUrl: `https://blog.qolab.eu`,
+    siteUrl: `https://qolab.eu`,
     description: `Prečítajte si články od našich najlepších ľudí. Venujeme sa prevažne témam v oblasti vývoja webových aplikácii, ale nájdete u nás aj iné zaujímavé odvetvia.`,
     hero: {
       heading: `Vitajte, prečítajte si články od našich najlepších ľudí.`,
@@ -39,18 +39,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `qolab | Blog`,
+        short_name: `qolab`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `standalone`,
         icon: `src/assets/logo.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
       },
     },
     {

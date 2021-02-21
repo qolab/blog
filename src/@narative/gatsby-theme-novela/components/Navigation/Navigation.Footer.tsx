@@ -57,7 +57,7 @@ const Footer: React.FC<{}> = () => {
         <FooterContainer>
           <FooterText>
             © {copyrightDate} {name} &ensp;
-          <a style={{color: "grey"}} href="mailto:hello@qolab.com">hello@qolab.com</a> &ensp;
+          <a style={{color: "grey"}} href="mailto:hello@qolab.eu">hello@qolab.eu</a> &ensp;
           <a style={{color: "grey"}} href="https://qolab.eu">qolab.eu</a> 
           </FooterText>
           <div>
