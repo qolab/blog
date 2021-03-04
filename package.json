@@ -1,21 +1,21 @@
 {
-  "private": true,
-  "name": "@qolab/blog",
-  "version": "1.0.0",
-  "license": "proprietary",
-  "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
-    "clean": "gatsby clean"
-  },
-  "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.18.6",
-    "gatsby": "^3.0.1",
-    "gatsby-plugin-manifest": "^3.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
-  "devDependencies": {
-    "gatsby-plugin-root-import": "^2.0.5"
-  }
+    "private": true,
+    "name": "@qolab/blog",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "scripts": {
+        "build": "gatsby build",
+        "dev": "gatsby develop",
+        "clean": "gatsby clean"
+    },
+    "dependencies": {
+        "@narative/gatsby-theme-novela": "^0.18.6",
+        "gatsby": "^2.24.65",
+        "gatsby-plugin-manifest": "^2.12.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    },
+    "devDependencies": {
+        "gatsby-plugin-root-import": "^2.0.5"
+    }
 }
