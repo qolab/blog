@@ -3,9 +3,9 @@ module.exports = {
     title: `qolab | Blog`,
     name: `qolab`,
     siteUrl: `https://qolab.eu`,
-    description: `Prečítajte si články od našich najlepších ľudí. Venujeme sa prevažne témam v oblasti vývoja webových aplikácii, ale nájdete u nás aj iné zaujímavé odvetvia.`,
+    description: ``,
     hero: {
-      heading: `Vitajte, prečítajte si články od našich najlepších ľudí.`,
+      heading: ``,
       maxWidth: 652,
     },
     social: [
