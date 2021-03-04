@@ -2,11 +2,32 @@ on: push
 name: Build Gatsby Site
 jobs:
   build:
-    name: Build Gatsby Site
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build Gatsby Site
-      uses: jzweifel/gatsby-cli-github-action@master
-      with:
-        gatsby-arg: build
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      
+      - name: Caching Gatsby
+        id: gatsby-cache-build
+        uses: actions/cache@v2
+        with:
+          path: |
+            public
+            .cache
+          key: ${{ runner.os }}-gatsby-build-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-build-
+      
+      - name: Installing dependencies
+        run: yarn install
+      
+      - name: Building Gatsby site
+        run: yarn build --log-pages
+        env:
+          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
+          CI: true
