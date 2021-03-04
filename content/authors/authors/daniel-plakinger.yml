@@ -1,0 +1,9 @@
+name: Daniel Plakinger
+bio: |
+  Just another PHP programmer and Blogger
+avatar: ./avatars/daniel-plakinger.jpeg
+social:
+  - url: https://stackoverflow.com/users/2529486/veeenex
+  - url: https://twitter.com/veeenex
+  - url: https://github.com/veeenex
+featured: true
